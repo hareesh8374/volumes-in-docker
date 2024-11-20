@@ -1,0 +1,20 @@
+TO create volumes in a docker there are 3 ways 
+  1. USING DOCKER FILE
+  2. CREATE A VOLUME WHILE CREATE CONTAINER USING COMMAND
+  3. CREATING A LOCAL VOLUME AND MOUNT IT TO THE CONTAINER
+1.USING DOCKER FILE:
+          Docker file is using to create a volume, after creating docker file build the Image, using image creating container and also remeber that Docker file and Components are
+starting letters are Capital letters(upper cases), and components are in Docker file : FROM and VOLUME .
+FROM: in this component will be in Dockerfile only image will be built.
+VOLUME: it is component will be created volume and create container after this container will be provide in["/"]place in inside double codes.
+after creating this file exicute command to build image using docker file [ docker build -it image name]
+now create container using build image [docker run -it -d --name contname -p 81:80 imgname]
+now go in to the container exec command and go to root directory there use command 'ls' and u will see the created volume as a directory as shown.
+2.CREATE A VOLUME WHILE CREATE CONTAINER USING COMMAND:
+                   in this method we use a simple command to create avolume using required base image [docker run -it -d --name cont1 -v/volume2 httpd]
+after executing command and go inside container using exec command and go to root directory there use command'ls' you will see the created volume as adirectory.
+3. CREATING A LOCAL VOLUME AND MOUNT IT TO THE CONTAINER:
+                      in this method first we create a local volume using the command[docker volume create volume4]
+after that exicute the below command to mount the created volume and container.
+[docker run -it -d --name cont3 --mount source=volume4,destination=/volume4 ubuntu]
+after exicuting command go in the container using exec command and go to root directory there is command 'ls' u will see the created volume as a directory shown
